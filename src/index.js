@@ -12,11 +12,42 @@ const onClickAdd = () => {
   // liタグの生成
   const li = document.createElement("li");
 
+  // pタグの生成
+  const p = document.createElement("p");
+
   // 完了ボタンを生成
   const completeButton = document.createElement("button");
   completeButton.innerHTML = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    // 完了リストに追加する要素
+    const addTarget = completeButton.parentNode;
+    const text = addTarget.firstElementChild.innerText;
+    console.log(text);
+
+    // 完了のものを削除
+    const completeSubTarget = completeButton.parentNode;
+    const completeTarget = completeSubTarget.parentNode;
+    // ulタグの配下のdeleteTargetを削除
+    document.getElementById("incomplete-list").removeChild(completeTarget);
+
+    // 中身の初期化
+    div.innerHTML = "";
+
+    // 完了したテキストを完了したほうに移す
+    const p = document.createElement("p");
+    p.innerHTML = text;
+
+    // buttonの生成
+    const backButton = document.createElement("button");
+    backButton.innerHTML = "戻す";
+
+    // 要素の設定
+    li.appendChild(div);
+    div.appendChild(p);
+    div.appendChild(backButton);
+    console.log(li);
+    const completeList = document.getElementById("complete-list");
+    completeList.appendChild(li);
   });
 
   // 削除ボタンを生成
@@ -32,10 +63,11 @@ const onClickAdd = () => {
   });
 
   //divタグの中にinputTextを代入
-  div.innerHTML = inputText;
+  p.innerHTML = inputText;
 
   // liタグの中にdivタグを
   li.appendChild(div);
+  div.appendChild(p);
   div.appendChild(completeButton);
   div.appendChild(deleteButton);
 
