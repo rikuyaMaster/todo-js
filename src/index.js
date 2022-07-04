@@ -12,13 +12,27 @@ const onClickAdd = () => {
   // liタグの生成
   const li = document.createElement("li");
 
+  // 完了ボタンを生成
+  const completeButton = document.createElement("button");
+  completeButton.innerHTML = "完了";
+  completeButton.addEventListener("click", () => {
+    alert("完了");
+  });
+
+  // 削除ボタンを生成
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "削除";
+  deleteButton.addEventListener("click", () => {
+    alert("削除");
+  });
+
   //divタグの中にinputTextを代入
   div.innerHTML = inputText;
-  console.log(div);
 
   // liタグの中にdivタグを
   li.appendChild(div);
-  console.log(li);
+  div.appendChild(completeButton);
+  div.appendChild(deleteButton);
 
   // ulタグの配下にliタグを
   document.getElementById("incomplete-list").appendChild(li);
