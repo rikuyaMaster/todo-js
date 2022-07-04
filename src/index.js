@@ -23,7 +23,12 @@ const onClickAdd = () => {
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "削除";
   deleteButton.addEventListener("click", () => {
-    alert("削除");
+    // 押された削除ボタンの親であるliを削除
+    // これでどこの要素が押されたかを判断できる(親が探せる)
+    const deleteSubTarget = deleteButton.parentNode;
+    const deleteTarget = deleteSubTarget.parentNode;
+    // ulタグの配下のdeleteTargetを削除
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
   });
 
   //divタグの中にinputTextを代入
